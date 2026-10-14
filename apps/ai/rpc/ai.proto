@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package ai;
+
+option go_package = "./ai";
+
+// 工具定义
+message Tool {
+  string name = 1;
+  string description = 2;
+  map<string, string> parameters = 3; // 参数名 -> 参数描述
+}
+
+message ToolCall {
+  string name = 1;
+  map<string, string> arguments = 2;
+}
+
+message ChatRequest {
+  string user_id = 1;
+  string message = 2;
+  string conversation_id = 3;
+  string history_context = 4;
+  repeated Tool tools = 5;       // 可用工具列表
+  string tool_result = 6;        // 工具执行结果（用于 ReAct 循环）
+  int64 exclude_send_time = 7;   // 检索时排除 sendTime >= 此值的消息（当前轮用户消息时间戳）
+}
+
+message ChatResponse {
+  string reply = 1;
+  bool success = 2;
+  string error_msg = 3;
+  ToolCall tool_call = 4;        // AI 返回的工具调用请求
+  bool need_action = 5;          // 是否需要执行工具
+}
+
+// MCP相关消息定义
+message MCPRequest {
+  string method = 1;             // MCP方法名
+  string data = 2;               // JSON格式的MCP消息数据
+  map<string, string> metadata = 3; // 元数据
+}
+
+message MCPResponse {
+  bool success = 1;              // 是否成功
+  string data = 2;               // JSON格式的MCP响应数据
+  string error = 3;              // 错误信息
+}
+
+service AiAgent {
+  rpc Chat(ChatRequest) returns(ChatResponse);
+  rpc HandleMCP(MCPRequest) returns(MCPResponse);  // 新增MCP处理方法
+}

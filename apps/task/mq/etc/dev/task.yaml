@@ -1,0 +1,108 @@
+Name: task.mq
+ListenOn: 0.0.0.0:10091
+
+MsgChatTransfer:
+  Name: MsgChatTransfer
+  Brokers:
+    - 127.0.0.1:9092
+  Group: kafka
+  Topic: msgChatTransfer
+  Offset: first
+  Consumers: 1
+  ForceCommit: false
+
+MsgReadTransfer:
+  Name: MsgReadTransfer
+  Brokers:
+    - 127.0.0.1:9092
+  Group: kafka
+  Topic: msgReadTransfer
+  Offset: first
+  Consumers: 1
+
+TopicRoundTransfer:
+  Name: TopicRoundTransfer
+  Brokers:
+    - 127.0.0.1:9092
+  Group: kafka
+  Topic: topicRoundComplete
+  Offset: first
+  Consumers: 1
+
+# 死信队列 Topic（消息处理失败后发送到这里）
+# 需要在 Kafka 中手动创建: kafka-topics.sh --create --topic msgChatTransferDLT --partitions 3 --replication-factor 1
+DeadLetterTopic: msgChatTransferDLT
+
+# Trace 消费者配置 (Kafka → MongoDB → Jaeger UI)
+TraceConsumer:
+  Name: trace-consumer
+  Brokers:
+    - 127.0.0.1:9092
+  Group: trace-consumer-group
+  Topic: jaeger-traces
+  Offset: first
+  Consumers: 1
+
+MsgReadHandler:
+  GroupMsgReadHandler: 1
+  GroupMsgReadRecordDelayTime: 60
+  GroupMsgReadRecordDelayCount: 2
+  GroupMsgReadAutoMergeThreshold: 10  # 群人数超过10人时启用合并推送，0表示不启用智能合并
+
+Redisx:
+  Host: 127.0.0.1:6379
+  Type: node
+
+Mongo:
+  Url: "mongodb://root:easy-chat@127.0.0.1:27017"
+  Db: easy-chat
+  TraceDb: jaeger  # Trace 数据存储的数据库
+
+Qwen:
+  ApiKey: ""
+  Model: qwen-turbo
+  Endpoint: https://dashscope.aliyuncs.com
+  EmbeddingModel: text-embedding-v3
+
+Tools:
+  GitHub:
+    Enabled: false
+    Token: ""
+
+SocialRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: social.rpc
+  CircuitBreaker:
+    Enable: true
+    ErrorRate: 50
+    MinSample: 100
+    OpenDuration: 10s
+
+AiRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: ai.rpc
+  CircuitBreaker:
+    Enable: true
+    ErrorRate: 50
+    MinSample: 100
+    OpenDuration: 10s
+
+Ws:
+  Host: 127.0.0.1:10090
+
+Topic:
+  FormalHitThreshold: 0.75
+  FormalGrayLow: 0.60
+  ExploreHitThreshold: 0.70
+  MissLimit: 3
+  PromoteHitLimit: 3
+  MaxCandidates: 5
+  RoundSummaryBufferSize: 20
+  SummaryRewriteEvery: 10
+  HistoryMinScore: 0.3
+  HistoryRestoreSim: 0.70
+  HistoryDecayLambda: 0.03

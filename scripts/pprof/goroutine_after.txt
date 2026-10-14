@@ -1,0 +1,145 @@
+goroutine profile: total 35
+12 @ 0x7ff76dbded0e 0x7ff76db72fe5 0x7ff76db72b92 0x7ff76e399165 0x7ff76dbe6f41
+#	0x7ff76e399164	easy-chat/apps/im/ws/websocket.(*WorkerPool).worker+0x204	D:/easy-chat/apps/im/ws/websocket/worker_pool.go:115
+
+3 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e1f7e8c 0x7ff76dbe6f41
+#	0x7ff76e1f7e8b	google.golang.org/grpc/internal/grpcsync.(*CallbackSerializer).run+0x10b	C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/internal/grpcsync/callback_serializer.go:88
+
+2 @ 0x7ff76dbded0e 0x7ff76dbe023d 0x7ff76dbe021d 0x7ff76dbf2e53 0x7ff76e4eeacb 0x7ff76e4ee564 0x7ff76dbe6f41
+#	0x7ff76dbe021c	sync.runtime_notifyListWait+0x13c								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/sema.go:606
+#	0x7ff76dbf2e52	sync.(*Cond).Wait+0x72										C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/sync/cond.go:71
+#	0x7ff76e4eeaca	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*pool).createConnections.func2+0xca	C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/pool.go:972
+#	0x7ff76e4ee563	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*pool).createConnections+0x103		C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/pool.go:994
+
+1 @ 0x7ff76db789b1 0x7ff76dbe06e9 0x7ff76e740c73 0x7ff76dbe6f41
+#	0x7ff76dbe06e8	os/signal.signal_recv+0x28	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/sigqueue.go:152
+#	0x7ff76e740c72	os/signal.loop+0x12		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/os/signal/signal_unix.go:23
+
+1 @ 0x7ff76db9d711 0x7ff76dbddabd 0x7ff76e370771 0x7ff76e370585 0x7ff76e36d40b 0x7ff76e3866ca 0x7ff76e38717a 0x7ff76e084f09 0x7ff76e086de7 0x7ff76e0a442e 0x7ff76e083005 0x7ff76dbe6f41
+#	0x7ff76e370770	runtime/pprof.writeRuntimeProfile+0xb0	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/pprof/pprof.go:788
+#	0x7ff76e370584	runtime/pprof.writeGoroutine+0x44	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/pprof/pprof.go:747
+#	0x7ff76e36d40a	runtime/pprof.(*Profile).WriteTo+0x14a	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/pprof/pprof.go:371
+#	0x7ff76e3866c9	net/http/pprof.handler.ServeHTTP+0x529	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/pprof/pprof.go:272
+#	0x7ff76e387179	net/http/pprof.Index+0xd9		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/pprof/pprof.go:389
+#	0x7ff76e084f08	net/http.HandlerFunc.ServeHTTP+0x28	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:2322
+#	0x7ff76e086de6	net/http.(*ServeMux).ServeHTTP+0x1c6	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:2861
+#	0x7ff76e0a442d	net/http.serverHandler.ServeHTTP+0x8d	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:3340
+#	0x7ff76e083004	net/http.(*conn).serve+0x664		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:2109
+
+1 @ 0x7ff76dbded0e 0x7ff76db72fe5 0x7ff76db72b72 0x7ff76e743af5 0x7ff76dbe6f41
+#	0x7ff76e743af4	main.main.func7+0x34	D:/easy-chat/apps/im/ws/im.go:129
+
+1 @ 0x7ff76dbded0e 0x7ff76db72fe5 0x7ff76db72b92 0x7ff76e554914 0x7ff76dbe6f41
+#	0x7ff76e554913	easy-chat/pkg/redis.(*HotKeyCache).cleanupHotKeys+0x93	D:/easy-chat/pkg/redis/hotkey_cache.go:460
+
+1 @ 0x7ff76dbded0e 0x7ff76dba1137 0x7ff76dbddea5 0x7ff76dc4d2c7 0x7ff76dc4e705 0x7ff76dc4ea7a 0x7ff76dc4f50e 0x7ff76dc77205 0x7ff76dc8bd05 0x7ff76dc2540e 0x7ff76e4e23f3 0x7ff76e4e2225 0x7ff76e4e1ed6 0x7ff76e4e2d7d 0x7ff76e45adac 0x7ff76e4622f3 0x7ff76e484965 0x7ff76e4f6f91 0x7ff76e4f4be5 0x7ff76dbe6f41
+#	0x7ff76dbddea4	internal/poll.runtime_pollWait+0x84							C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/netpoll.go:351
+#	0x7ff76dc4d2c6	internal/poll.(*pollDesc).wait+0x26							C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff76dc4e704	internal/poll.waitIO+0x64								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:187
+#	0x7ff76dc4ea79	internal/poll.execIO+0x139								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:240
+#	0x7ff76dc4f50d	internal/poll.(*FD).Read+0x1ed								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:533
+#	0x7ff76dc77204	net.(*netFD).Read+0x24									C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/fd_posix.go:68
+#	0x7ff76dc8bd04	net.(*conn).Read+0x44									C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/net.go:196
+#	0x7ff76dc2540d	io.ReadAtLeast+0x8d									C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/io/io.go:335
+#	0x7ff76e4e23f2	io.ReadFull+0x1f2									C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/io/io.go:354
+#	0x7ff76e4e2224	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*connection).read+0x24		C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/connection.go:448
+#	0x7ff76e4e1ed5	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*connection).readWireMessage+0x1b5	C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/connection.go:410
+#	0x7ff76e4e2d7c	go.mongodb.org/mongo-driver/x/mongo/driver/topology.initConnection.ReadWireMessage+0x1c	C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/connection.go:570
+#	0x7ff76e45adab	go.mongodb.org/mongo-driver/x/mongo/driver.Operation.readWireMessage+0x4b		C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/operation.go:957
+#	0x7ff76e4622f2	go.mongodb.org/mongo-driver/x/mongo/driver.Operation.ExecuteExhaust+0xf2		C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/operation_exhaust.go:21
+#	0x7ff76e484964	go.mongodb.org/mongo-driver/x/mongo/driver/operation.(*Hello).StreamResponse+0x184	C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/operation/hello.go:536
+#	0x7ff76e4f6f90	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*Server).check+0x770		C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/server.go:798
+#	0x7ff76e4f4be4	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*Server).update+0x284		C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/server.go:564
+
+1 @ 0x7ff76dbded0e 0x7ff76dba1137 0x7ff76dbddea5 0x7ff76dc4d2c7 0x7ff76dc4e705 0x7ff76dc4ea7a 0x7ff76dc53205 0x7ff76dc53536 0x7ff76dc7944b 0x7ff76dc9499b 0x7ff76dc93a50 0x7ff76e0888ec 0x7ff76e0884d2 0x7ff76e3980dc 0x7ff76e398033 0x7ff76e7439e7 0x7ff76dbaa65d 0x7ff76dbe6f41
+#	0x7ff76dbddea4	internal/poll.runtime_pollWait+0x84			C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/netpoll.go:351
+#	0x7ff76dc4d2c6	internal/poll.(*pollDesc).wait+0x26			C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff76dc4e704	internal/poll.waitIO+0x64				C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:187
+#	0x7ff76dc4ea79	internal/poll.execIO+0x139				C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:240
+#	0x7ff76dc53204	internal/poll.(*FD).acceptOne+0x64			C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:1039
+#	0x7ff76dc53535	internal/poll.(*FD).Accept+0x1b5			C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:1073
+#	0x7ff76dc7944a	net.(*netFD).accept+0x4a				C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/fd_windows.go:202
+#	0x7ff76dc9499a	net.(*TCPListener).accept+0x1a				C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/tcpsock_posix.go:159
+#	0x7ff76dc93a4f	net.(*TCPListener).Accept+0x2f				C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/tcpsock.go:380
+#	0x7ff76e0888eb	net/http.(*Server).Serve+0x30b				C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:3463
+#	0x7ff76e0884d1	net/http.(*Server).ListenAndServe+0x71			C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:3389
+#	0x7ff76e3980db	net/http.ListenAndServe+0xbb				C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:3704
+#	0x7ff76e398032	easy-chat/apps/im/ws/websocket.(*Server).Start+0x12	D:/easy-chat/apps/im/ws/websocket/server.go:632
+#	0x7ff76e7439e6	main.main+0x966						D:/easy-chat/apps/im/ws/im.go:137
+#	0x7ff76dbaa65c	runtime.main+0x27c					C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/proc.go:285
+
+1 @ 0x7ff76dbded0e 0x7ff76dba1137 0x7ff76dbddea5 0x7ff76dc4d2c7 0x7ff76dc4e705 0x7ff76dc4ea7a 0x7ff76dc53205 0x7ff76dc53536 0x7ff76dc7944b 0x7ff76dc9499b 0x7ff76dc93a50 0x7ff76e0888ec 0x7ff76e0884d2 0x7ff76e7444d5 0x7ff76e7444d6 0x7ff76dbe6f41
+#	0x7ff76dbddea4	internal/poll.runtime_pollWait+0x84	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/netpoll.go:351
+#	0x7ff76dc4d2c6	internal/poll.(*pollDesc).wait+0x26	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff76dc4e704	internal/poll.waitIO+0x64		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:187
+#	0x7ff76dc4ea79	internal/poll.execIO+0x139		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:240
+#	0x7ff76dc53204	internal/poll.(*FD).acceptOne+0x64	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:1039
+#	0x7ff76dc53535	internal/poll.(*FD).Accept+0x1b5	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:1073
+#	0x7ff76dc7944a	net.(*netFD).accept+0x4a		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/fd_windows.go:202
+#	0x7ff76dc9499a	net.(*TCPListener).accept+0x1a		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/tcpsock_posix.go:159
+#	0x7ff76dc93a4f	net.(*TCPListener).Accept+0x2f		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/tcpsock.go:380
+#	0x7ff76e0888eb	net/http.(*Server).Serve+0x30b		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:3463
+#	0x7ff76e0884d1	net/http.(*Server).ListenAndServe+0x71	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:3389
+#	0x7ff76e7444d4	net/http.ListenAndServe+0x134		C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/http/server.go:3704
+#	0x7ff76e7444d5	main.main.func1+0x135			D:/easy-chat/apps/im/ws/im.go:48
+
+1 @ 0x7ff76dbded0e 0x7ff76dba1137 0x7ff76dbddea5 0x7ff76dc4d2c7 0x7ff76dc4e705 0x7ff76dc4ea7a 0x7ff76dc53205 0x7ff76dc53536 0x7ff76dc7944b 0x7ff76dc9499b 0x7ff76dc93a50 0x7ff76e2c84b0 0x7ff76e39ede5 0x7ff76dbe6f41
+#	0x7ff76dbddea4	internal/poll.runtime_pollWait+0x84							C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/runtime/netpoll.go:351
+#	0x7ff76dc4d2c6	internal/poll.(*pollDesc).wait+0x26							C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff76dc4e704	internal/poll.waitIO+0x64								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:187
+#	0x7ff76dc4ea79	internal/poll.execIO+0x139								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:240
+#	0x7ff76dc53204	internal/poll.(*FD).acceptOne+0x64							C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:1039
+#	0x7ff76dc53535	internal/poll.(*FD).Accept+0x1b5							C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/internal/poll/fd_windows.go:1073
+#	0x7ff76dc7944a	net.(*netFD).accept+0x4a								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/fd_windows.go:202
+#	0x7ff76dc9499a	net.(*TCPListener).accept+0x1a								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/tcpsock_posix.go:159
+#	0x7ff76dc93a4f	net.(*TCPListener).Accept+0x2f								C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/net/tcpsock.go:380
+#	0x7ff76e2c84af	google.golang.org/grpc.(*Server).Serve+0x42f						C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/server.go:884
+#	0x7ff76e39ede4	easy-chat/apps/im/ws/internal/distributed.(*WsRelayer).StartGrpcServer.func1+0x24	D:/easy-chat/apps/im/ws/internal/distributed/relayer.go:85
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76dde4c97 0x7ff76dbe6f41
+#	0x7ff76dde4c96	github.com/go-redis/redis/v8/internal/pool.(*ConnPool).reaper+0xb6	C:/Users/张皓翔/go/pkg/mod/github.com/go-redis/redis/v8@v8.11.5/internal/pool/pool.go:485
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e0b29a5 0x7ff76dbe6f41
+#	0x7ff76e0b29a4	github.com/zeromicro/go-zero/core/stat.init.0.func1+0xe4	C:/Users/张皓翔/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.6/core/stat/usage.go:31
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e2bd2dc 0x7ff76e2bb37a 0x7ff76dbe6f41
+#	0x7ff76e2bd2db	google.golang.org/grpc.(*addrConn).resetTransportAndUnlock+0x3bb	C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/clientconn.go:1275
+#	0x7ff76e2bb379	google.golang.org/grpc.(*addrConn).connect+0x139			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/clientconn.go:911
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e2c1885 0x7ff76e2bc32f 0x7ff76e2d5d05 0x7ff76e2d52e5 0x7ff76e2d6f62 0x7ff76e2d4daa 0x7ff76e2d4167 0x7ff76e2d3b44 0x7ff76e2b6631 0x7ff76e72cacf 0x7ff76e2b6505 0x7ff76e6bbea5 0x7ff76e729cd8 0x7ff76e723049 0x7ff76e722a12 0x7ff76e73eeb7 0x7ff76e73f545 0x7ff76dbe6f41
+#	0x7ff76e2c1884	google.golang.org/grpc.(*pickerWrapper).pick+0x164			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/picker_wrapper.go:120
+#	0x7ff76e2bc32e	google.golang.org/grpc.(*ClientConn).getTransport+0x2e			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/clientconn.go:1049
+#	0x7ff76e2d5d04	google.golang.org/grpc.(*csAttempt).getTransport+0x44			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/stream.go:468
+#	0x7ff76e2d52e4	google.golang.org/grpc.newClientStreamWithParams.func2+0x24		C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/stream.go:351
+#	0x7ff76e2d6f61	google.golang.org/grpc.(*clientStream).withRetry+0x141			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/stream.go:789
+#	0x7ff76e2d4da9	google.golang.org/grpc.newClientStreamWithParams+0xb89			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/stream.go:363
+#	0x7ff76e2d4166	google.golang.org/grpc.newClientStream.func3+0x86			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/stream.go:220
+#	0x7ff76e2d3b43	google.golang.org/grpc.newClientStream+0x763				C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/stream.go:255
+#	0x7ff76e2b6630	google.golang.org/grpc.invoke+0x70					C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/call.go:66
+#	0x7ff76e72cace	go.etcd.io/etcd/client/v3.(*Client).unaryClientInterceptor.func1+0x64e	C:/Users/张皓翔/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.9/retry_interceptor.go:58
+#	0x7ff76e2b6504	google.golang.org/grpc.(*ClientConn).Invoke+0x204			C:/Users/张皓翔/go/pkg/mod/google.golang.org/grpc@v1.69.0-dev/call.go:35
+#	0x7ff76e6bbea4	go.etcd.io/etcd/api/v3/etcdserverpb.(*kVClient).Range+0xc4		C:/Users/张皓翔/go/pkg/mod/go.etcd.io/etcd/api/v3@v3.5.9/etcdserverpb/rpc.pb.go:6460
+#	0x7ff76e729cd7	go.etcd.io/etcd/client/v3.(*retryKVClient).Range+0x117			C:/Users/张皓翔/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.9/retry.go:105
+#	0x7ff76e723048	go.etcd.io/etcd/client/v3.(*kv).Do+0x1c8				C:/Users/张皓翔/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.9/kv.go:149
+#	0x7ff76e722a11	go.etcd.io/etcd/client/v3.(*kv).Get+0xb1				C:/Users/张皓翔/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.9/kv.go:119
+#	0x7ff76e73eeb6	easy-chat/pkg/etcdwatch.(*Watcher).Get+0x36				D:/easy-chat/pkg/etcdwatch/watch.go:32
+#	0x7ff76e73f544	easy-chat/pkg/etcdwatch.SyncAndWatch.func1+0xc4				D:/easy-chat/pkg/etcdwatch/watch.go:90
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e3fb9b2 0x7ff76dbe6f41
+#	0x7ff76e3fb9b1	go.mongodb.org/mongo-driver/internal.(*CancellationListener).Listen+0x71	C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/internal/cancellation_listener.go:30
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e4ef153 0x7ff76dbe6f41
+#	0x7ff76e4ef152	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*pool).maintain+0x212	C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/pool.go:1102
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e4f0f4d 0x7ff76e4f0c37 0x7ff76dbe6f41
+#	0x7ff76e4f0f4c	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*rttMonitor).runHellos+0x10c	C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/rtt_monitor.go:141
+#	0x7ff76e4f0c36	go.mongodb.org/mongo-driver/x/mongo/driver/topology.(*rttMonitor).start+0x136		C:/Users/张皓翔/go/pkg/mod/go.mongodb.org/mongo-driver@v1.12.1/x/mongo/driver/topology/rtt_monitor.go:115
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e5aa0b1 0x7ff76dbe6f41
+#	0x7ff76e5aa0b0	github.com/segmentio/kafka-go.(*connPool).discover+0x450	C:/Users/张皓翔/go/pkg/mod/github.com/segmentio/kafka-go@v0.4.38/transport.go:620
+
+1 @ 0x7ff76dbded0e 0x7ff76dbbd2f7 0x7ff76e7407a6 0x7ff76dbe6f41
+#	0x7ff76e7407a5	os/signal.NotifyContext.func1+0x65	C:/Users/张皓翔/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.0.windows-amd64/src/os/signal/signal.go:289
+
+1 @ 0x7ff76dbe6f41
+

@@ -1,0 +1,116 @@
+groups:
+  # ========== 消息推送延迟告警 ==========
+  - name: message_push_latency
+    interval: 30s
+    rules:
+      # 单聊 P99 延迟告警
+      - alert: SingleChatP99LatencyHigh
+        expr: histogram_quantile(0.99, rate(easychat_message_push_latency_milliseconds_bucket{chat_type="single_chat", operation="push"}[5m])) > 200
+        for: 5m
+        labels:
+          severity: warning
+          service: im-ws
+        annotations:
+          summary: "单聊消息推送 P99 延迟过高"
+          description: "单聊 P99 延迟 {{ $value | humanize }}ms，超过阈值 200ms"
+
+      # 群聊 P99 延迟告警
+      - alert: GroupChatP99LatencyHigh
+        expr: histogram_quantile(0.99, rate(easychat_message_push_latency_milliseconds_bucket{chat_type="group_chat", operation="push"}[5m])) > 500
+        for: 5m
+        labels:
+          severity: warning
+          service: im-ws
+        annotations:
+          summary: "群聊消息推送 P99 延迟过高"
+          description: "群聊 P99 延迟 {{ $value | humanize }}ms，超过阈值 500ms"
+
+  # ========== WebSocket 连接告警 ==========
+  - name: websocket_connections
+    interval: 30s
+    rules:
+      - alert: WebSocketConnectionsHigh
+        expr: easychat_websocket_connections > 10000
+        for: 5m
+        labels:
+          severity: warning
+          service: im-ws
+        annotations:
+          summary: "WebSocket 连接数过高"
+          description: "当前连接数 {{ $value }}，建议扩容"
+
+      - alert: WebSocketConnectionDrop
+        expr: rate(easychat_websocket_disconnection_total{reason="error"}[5m]) > 10
+        for: 5m
+        labels:
+          severity: critical
+          service: im-ws
+        annotations:
+          summary: "WebSocket 错误断开频繁"
+          description: "错误断开速率 {{ $value | humanize }}/s，可能存在网络问题"
+
+  # ========== 缓存命中率告警 ==========
+  - name: cache_hit_rate
+    interval: 60s
+    rules:
+      - alert: UnreadCacheHitRateLow
+        expr: rate(easychat_unread_count_cache_hit_total[5m]) / (rate(easychat_unread_count_cache_hit_total[5m]) + rate(easychat_unread_count_cache_miss_total[5m])) < 0.8
+        for: 10m
+        labels:
+          severity: warning
+          service: im-ws
+        annotations:
+          summary: "未读数缓存命中率过低"
+          description: "缓存命中率 {{ $value | humanizePercentage }}，低于阈值 80%"
+
+  # ========== 数据库告警 ==========
+  - name: database_latency
+    interval: 30s
+    rules:
+      - alert: RedisLatencyHigh
+        expr: histogram_quantile(0.99, rate(easychat_redis_operation_latency_milliseconds_bucket[5m])) > 50
+        for: 5m
+        labels:
+          severity: warning
+          service: redis
+        annotations:
+          summary: "Redis 操作延迟过高"
+          description: "Redis P99 延迟 {{ $value | humanize }}ms，可能需要优化"
+
+      - alert: MongoLatencyHigh
+        expr: histogram_quantile(0.99, rate(easychat_mongo_operation_latency_milliseconds_bucket[5m])) > 500
+        for: 5m
+        labels:
+          severity: warning
+          service: mongodb
+        annotations:
+          summary: "MongoDB 操作延迟过高"
+          description: "MongoDB P99 延迟 {{ $value | humanize }}ms，请检查索引"
+
+  # ========== 消息队列告警 ==========
+  - name: kafka_lag
+    interval: 30s
+    rules:
+      - alert: KafkaConsumeLagHigh
+        expr: easychat_kafka_consume_lag > 10000
+        for: 5m
+        labels:
+          severity: warning
+          service: kafka
+        annotations:
+          summary: "Kafka 消费 lag 过高"
+          description: "消息积压 {{ $value | humanize }} 条，请检查消费者"
+
+  # ========== 错误率告警 ==========
+  - name: error_rate
+    interval: 30s
+    rules:
+      - alert: MessagePushErrorRateHigh
+        expr: rate(easychat_message_push_total{status="failed"}[5m]) / rate(easychat_message_push_total[5m]) > 0.01
+        for: 5m
+        labels:
+          severity: critical
+          service: im-ws
+        annotations:
+          summary: "消息推送错误率过高"
+          description: "错误率 {{ $value | humanizePercentage }}，超过阈值 1%"

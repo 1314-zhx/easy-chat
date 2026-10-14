@@ -1,0 +1,317 @@
+[
+  {
+    "id": "case_001",
+    "scenario": "近因优先",
+    "query": "刚才那个部署失败的原因是什么",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们先聊一下接口设计", "age_hours": 6},
+      {"id": "m2", "role": "assistant", "content": "部署失败是因为数据库连接池满了", "age_hours": 0.5},
+      {"id": "m3", "role": "user", "content": "顺便说下今天的天气", "age_hours": 0.1},
+      {"id": "m4", "role": "assistant", "content": "天气不错", "age_hours": 0.05}
+    ]
+  },
+  {
+    "id": "case_002",
+    "scenario": "近因优先",
+    "query": "刚才提到的报错怎么修",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们在看登录链路", "age_hours": 8},
+      {"id": "m2", "role": "assistant", "content": "报错是因为 token 过期，需要重新登录", "age_hours": 0.2},
+      {"id": "m3", "role": "user", "content": "后面再说一下买票", "age_hours": 0.05},
+      {"id": "m4", "role": "assistant", "content": "买票可以看官方平台", "age_hours": 0.02}
+    ]
+  },
+  {
+    "id": "case_003",
+    "scenario": "近因优先",
+    "query": "你刚才说的那个优化方案是什么",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "assistant", "content": "优化方案是给检索加时间衰减", "age_hours": 0.3},
+      {"id": "m2", "role": "user", "content": "顺便问下你会不会做饭", "age_hours": 2},
+      {"id": "m3", "role": "user", "content": "昨天讨论过缓存", "age_hours": 30},
+      {"id": "m4", "role": "assistant", "content": "缓存也可以做热 key 保护", "age_hours": 28}
+    ]
+  },
+  {
+    "id": "case_004",
+    "scenario": "近因优先",
+    "query": "刚刚那个排查步骤是什么",
+    "gold_message_id": "m3",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们先看日志", "age_hours": 4},
+      {"id": "m2", "role": "assistant", "content": "再看数据库连接", "age_hours": 3.8},
+      {"id": "m3", "role": "assistant", "content": "先定位错误码再回溯调用链", "age_hours": 0.1},
+      {"id": "m4", "role": "user", "content": "另外我想吃火锅", "age_hours": 0.02}
+    ]
+  },
+  {
+    "id": "case_005",
+    "scenario": "近因优先",
+    "query": "刚才的结论是什么",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "先讨论接口限流", "age_hours": 12},
+      {"id": "m2", "role": "assistant", "content": "结论是把限流前置到网关", "age_hours": 0.6},
+      {"id": "m3", "role": "user", "content": "现在聊一下旅游计划", "age_hours": 0.1},
+      {"id": "m4", "role": "assistant", "content": "酒店要提前订", "age_hours": 0.05}
+    ]
+  },
+  {
+    "id": "case_006",
+    "scenario": "近因优先",
+    "query": "刚才那个原因再说一遍",
+    "gold_message_id": "m3",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们在看缓存", "age_hours": 9},
+      {"id": "m2", "role": "assistant", "content": "缓存可以加过期时间", "age_hours": 8.8},
+      {"id": "m3", "role": "assistant", "content": "原因是热门 key 集中过期", "age_hours": 0.4},
+      {"id": "m4", "role": "user", "content": "我在杭州工作", "age_hours": 0.2}
+    ]
+  },
+
+  {
+    "id": "case_007",
+    "scenario": "话题切换",
+    "query": "刚才那个怎么订票",
+    "gold_message_id": "m3",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们先看工作排期", "age_hours": 5},
+      {"id": "m2", "role": "assistant", "content": "排期要先对齐需求", "age_hours": 4.8},
+      {"id": "m3", "role": "user", "content": "旅行的话一般怎么订票", "age_hours": 0.4},
+      {"id": "m4", "role": "assistant", "content": "机票和酒店都可以提前买", "age_hours": 0.35}
+    ]
+  },
+  {
+    "id": "case_008",
+    "scenario": "话题切换",
+    "query": "刚才那个酒店怎么选",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "项目上线要注意什么", "age_hours": 10},
+      {"id": "m2", "role": "assistant", "content": "酒店最好选地铁口附近", "age_hours": 0.6},
+      {"id": "m3", "role": "user", "content": "工作上的 bug 先放一下", "age_hours": 0.2},
+      {"id": "m4", "role": "assistant", "content": "先把接口修掉", "age_hours": 0.15}
+    ]
+  },
+  {
+    "id": "case_009",
+    "scenario": "话题切换",
+    "query": "刚刚说到的景点有哪些",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "assistant", "content": "景点可以先看故宫和颐和园", "age_hours": 0.3},
+      {"id": "m2", "role": "user", "content": "刚才我们还在聊代码重构", "age_hours": 1.5},
+      {"id": "m3", "role": "assistant", "content": "重构要先拆模块", "age_hours": 1.4},
+      {"id": "m4", "role": "user", "content": "我喜欢喝咖啡", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_010",
+    "scenario": "话题切换",
+    "query": "刚才那个项目怎么安排",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "先说一下旅行路线", "age_hours": 6},
+      {"id": "m2", "role": "assistant", "content": "项目安排要先拆里程碑", "age_hours": 0.5},
+      {"id": "m3", "role": "user", "content": "再说说买票", "age_hours": 0.2},
+      {"id": "m4", "role": "assistant", "content": "机票可以提前定", "age_hours": 0.15}
+    ]
+  },
+  {
+    "id": "case_011",
+    "scenario": "话题切换",
+    "query": "刚才那个代码怎么写",
+    "gold_message_id": "m3",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们先聊生活", "age_hours": 7},
+      {"id": "m2", "role": "assistant", "content": "生活要注意休息", "age_hours": 6.8},
+      {"id": "m3", "role": "assistant", "content": "代码要先写测试再重构", "age_hours": 0.4},
+      {"id": "m4", "role": "user", "content": "我叫什么名字", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_012",
+    "scenario": "话题切换",
+    "query": "刚才那个需求怎么拆",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "先聊一下运动", "age_hours": 3},
+      {"id": "m2", "role": "assistant", "content": "需求要先拆用户故事", "age_hours": 0.25},
+      {"id": "m3", "role": "assistant", "content": "跑步前要热身", "age_hours": 0.2},
+      {"id": "m4", "role": "user", "content": "今天吃火锅", "age_hours": 0.1}
+    ]
+  },
+
+  {
+    "id": "case_013",
+    "scenario": "个人记忆",
+    "query": "我叫什么名字",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我叫张皓翔", "age_hours": 20},
+      {"id": "m2", "role": "assistant", "content": "好的我记住了", "age_hours": 19.8},
+      {"id": "m3", "role": "user", "content": "我们继续聊别的", "age_hours": 0.1},
+      {"id": "m4", "role": "assistant", "content": "可以", "age_hours": 0.05}
+    ]
+  },
+  {
+    "id": "case_014",
+    "scenario": "个人记忆",
+    "query": "我在哪里工作",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我在杭州工作", "age_hours": 18},
+      {"id": "m2", "role": "assistant", "content": "明白了", "age_hours": 17.9},
+      {"id": "m3", "role": "user", "content": "今天先看天气", "age_hours": 0.2},
+      {"id": "m4", "role": "assistant", "content": "天气不错", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_015",
+    "scenario": "个人记忆",
+    "query": "我喜欢什么",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我爱吃火锅", "age_hours": 40},
+      {"id": "m2", "role": "user", "content": "我喜欢喝咖啡", "age_hours": 1},
+      {"id": "m3", "role": "assistant", "content": "我记住了你的偏好", "age_hours": 0.9},
+      {"id": "m4", "role": "user", "content": "我们聊一下工作", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_016",
+    "scenario": "个人记忆",
+    "query": "我在哪里住",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我在深圳居住", "age_hours": 15},
+      {"id": "m2", "role": "assistant", "content": "好的", "age_hours": 14.8},
+      {"id": "m3", "role": "user", "content": "你还记得我吗", "age_hours": 0.2},
+      {"id": "m4", "role": "assistant", "content": "记得", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_017",
+    "scenario": "个人记忆",
+    "query": "我平时偏好什么",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我喜欢看电影", "age_hours": 30},
+      {"id": "m2", "role": "user", "content": "我偏好清淡饮食", "age_hours": 2},
+      {"id": "m3", "role": "assistant", "content": "收到", "age_hours": 1.8},
+      {"id": "m4", "role": "user", "content": "刚才那个怎么弄", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_018",
+    "scenario": "个人记忆",
+    "query": "我爱喝什么",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我爱喝咖啡", "age_hours": 12},
+      {"id": "m2", "role": "assistant", "content": "好的", "age_hours": 11.8},
+      {"id": "m3", "role": "user", "content": "我叫什么名字", "age_hours": 0.2},
+      {"id": "m4", "role": "assistant", "content": "不知道", "age_hours": 0.1}
+    ]
+  },
+
+  {
+    "id": "case_019",
+    "scenario": "长距离语义",
+    "query": "缓存热点问题怎么处理",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "assistant", "content": "可以用本地缓存加随机过期时间避免热 key", "age_hours": 72},
+      {"id": "m2", "role": "user", "content": "刚才讨论的是旅游计划", "age_hours": 0.5},
+      {"id": "m3", "role": "assistant", "content": "酒店和机票都要提前定", "age_hours": 0.4},
+      {"id": "m4", "role": "user", "content": "今天吃什么", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_020",
+    "scenario": "长距离语义",
+    "query": "消息去重怎么做",
+    "gold_message_id": "m3",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们先聊下运动", "age_hours": 96},
+      {"id": "m2", "role": "assistant", "content": "今天去跑步吧", "age_hours": 95.8},
+      {"id": "m3", "role": "assistant", "content": "可以按消息 id 或 sendTime 去重", "age_hours": 12},
+      {"id": "m4", "role": "user", "content": "我喜欢喝咖啡", "age_hours": 0.2}
+    ]
+  },
+  {
+    "id": "case_021",
+    "scenario": "长距离语义",
+    "query": "话题上下文怎么补全",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "昨天我们聊了架构", "age_hours": 50},
+      {"id": "m2", "role": "assistant", "content": "可以把活跃话题最近三轮对话注入检索", "age_hours": 48},
+      {"id": "m3", "role": "user", "content": "现在想问点别的", "age_hours": 0.2},
+      {"id": "m4", "role": "assistant", "content": "可以", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_022",
+    "scenario": "长距离语义",
+    "query": "怎么避免旧消息干扰",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "assistant", "content": "可以用时间衰减降低旧消息权重", "age_hours": 36},
+      {"id": "m2", "role": "user", "content": "刚才那个景点怎么去", "age_hours": 0.4},
+      {"id": "m3", "role": "assistant", "content": "打车或者地铁都行", "age_hours": 0.3},
+      {"id": "m4", "role": "user", "content": "我叫张三", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_023",
+    "scenario": "长距离语义",
+    "query": "RAG 检索怎么提升召回",
+    "gold_message_id": "m3",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我们在聊工作计划", "age_hours": 80},
+      {"id": "m2", "role": "assistant", "content": "先对齐里程碑", "age_hours": 79.8},
+      {"id": "m3", "role": "assistant", "content": "可以结合语义检索、时间衰减和话题上下文", "age_hours": 4},
+      {"id": "m4", "role": "user", "content": "我在深圳居住", "age_hours": 0.2}
+    ]
+  },
+  {
+    "id": "case_024",
+    "scenario": "长距离语义",
+    "query": "为什么要加时间衰减",
+    "gold_message_id": "m1",
+    "messages": [
+      {"id": "m1", "role": "assistant", "content": "为了让近期上下文优先于久远消息", "age_hours": 24},
+      {"id": "m2", "role": "user", "content": "刚才说的天气还不错", "age_hours": 0.3},
+      {"id": "m3", "role": "assistant", "content": "是的", "age_hours": 0.25},
+      {"id": "m4", "role": "user", "content": "我喜欢咖啡", "age_hours": 0.1}
+    ]
+  },
+  {
+    "id": "case_025",
+    "scenario": "长距离语义",
+    "query": "用户画像提取了什么",
+    "gold_message_id": "m2",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "我叫李雷", "age_hours": 60},
+      {"id": "m2", "role": "assistant", "content": "用户画像可以包括姓名、城市、偏好和事实", "age_hours": 2},
+      {"id": "m3", "role": "user", "content": "我们继续", "age_hours": 0.1},
+      {"id": "m4", "role": "assistant", "content": "好的", "age_hours": 0.05}
+    ]
+  },
+  {
+    "id": "case_026",
+    "scenario": "长距离语义",
+    "query": "检索的时候怎么过滤工具调用消息",
+    "gold_message_id": "m3",
+    "messages": [
+      {"id": "m1", "role": "user", "content": "先查天气", "age_hours": 48},
+      {"id": "m2", "role": "assistant", "content": "调用 weather 工具", "age_hours": 47.8},
+      {"id": "m3", "role": "assistant", "content": "可以在检索前跳过 tool call 消息", "age_hours": 6},
+      {"id": "m4", "role": "user", "content": "刚才那个怎么弄", "age_hours": 0.2}
+    ]
+  }
+]

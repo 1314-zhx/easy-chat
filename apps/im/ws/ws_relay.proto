@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package wsrelay;
+
+option go_package = "./wsrelay";
+
+// WsRelay 分布式 WebSocket 消息转发服务
+service WsRelay {
+  // SendToUser 发送消息给指定用户（跨实例调用）
+  rpc SendToUser(SendToUserReq) returns(SendToUserResp);
+
+  // NotifyOffline 通知用户下线（跨实例踢人）
+  rpc NotifyOffline(NotifyOfflineReq) returns(NotifyOfflineResp);
+}
+
+// SendToUserReq 发送消息请求
+message SendToUserReq {
+  string userId = 1;
+  string sendId = 2;
+  int32 frameType = 3;
+  string method = 4;
+  string msgId = 5;
+  string clientMsgId = 6;
+  string data = 7;
+}
+
+// SendToUserResp 发送消息响应
+message SendToUserResp {
+  bool success = 1;
+  string message = 2;
+}
+
+// NotifyOfflineReq 通知下线请求
+message NotifyOfflineReq {
+  string userId = 1;
+  string reason = 2;
+}
+
+// NotifyOfflineResp 通知下线响应
+message NotifyOfflineResp {
+  bool success = 1;
+  string message = 2;
+}

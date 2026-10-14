@@ -1,0 +1,38 @@
+Name: im.ws
+ListenOn: 0.0.0.0:10090
+
+Telemetry:
+  Name: im-ws
+  Endpoint: http://127.0.0.1:4318
+  Sampler: 1.0
+  SamplerType: const
+
+Redis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass: ""
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+
+JwtAuth:
+  AccessSecret: imooc.com
+
+Mongo:
+  Url: "mongodb://root:easy-chat@127.0.0.1:27017"
+  Db: easy-chat
+
+MsgChatTransfer:
+  Topic: msgChatTransfer
+  Addrs:
+    - 127.0.0.1:9092
+
+MsgReadTransfer:
+  Topic: msgReadTransfer
+  Addrs:
+    - 127.0.0.1:9092
+
+RelayListenOn: 0.0.0.0:10092
+InstanceAddr: 127.0.0.1:10092
+MaxConnectionIdleSeconds: 900

@@ -1,0 +1,47 @@
+# Prometheus 配置文件
+
+global:
+  scrape_interval: 15s      # 抓取间隔
+  evaluation_interval: 15s   # 评估规则间隔
+
+scrape_configs:
+  # ========== IM HTTP API 服务 ==========
+  - job_name: 'easy-chat-api'
+    static_configs:
+      - targets: ['localhost:8888']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # ========== IM WebSocket 服务 ==========
+  - job_name: 'easy-chat-ws'
+    static_configs:
+      - targets: ['localhost:10090']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # ========== 消息队列服务 ==========
+  - job_name: 'kafka'
+    static_configs:
+      - targets: ['localhost:9308']  # JMX Exporter
+
+  # ========== Redis 服务 ==========
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['localhost:9121']  # Redis Exporter
+
+  # ========== MongoDB 服务 ==========
+  - job_name: 'mongodb'
+    static_configs:
+      - targets: ['localhost:9216']  # MongoDB Exporter
+
+  # ========== Node Exporter ==========
+  - job_name: 'node'
+    static_configs:
+      - targets: ['localhost:9100']  # Node Exporter
+
+  # ========== 压测工具指标 ==========
+  - job_name: 'loadtest'
+    static_configs:
+      - targets: ['localhost:9091']  # HTTP 压测工具指标
+    metrics_path: '/metrics'
+    scrape_interval: 5s

@@ -1,0 +1,54 @@
+Name: ai.rpc
+ListenOn: 0.0.0.0:8080
+
+Telemetry:
+  Name: ai-rpc
+  Endpoint: http://127.0.0.1:4318
+  Sampler: 1.0
+  SamplerType: const
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: ai.rpc
+
+Mongo:
+  Url: "mongodb://root:easy-chat@127.0.0.1:27017"
+  Db: easy-chat
+
+Qwen:
+  ApiKey: ""
+  Model: qwen-turbo
+  Endpoint: https://dashscope.aliyuncs.com
+  EmbeddingModel: text-embedding-v3
+
+Tools:
+  GitHub:
+    Enabled: false
+    Token: ""
+
+RAG:
+  Enabled: true
+  TopK: 5
+  RecentHistoryCount: 5
+  SimilarityThreshold: 0.7
+  SemanticSearchLimit: 150
+  MaxContextChars: 6000
+  QueryRewriteEnabled: true
+  MemoryExtractEnabled: true
+
+MCP:
+  Enabled: true
+  Version: "1.0"
+  SupportedMethods:
+    - chat/completion
+    - tools/list
+    - tools/call
+  GitHub:
+    Enabled: false
+    Token: ""
+  Remote:
+    Enabled: false
+    Command: ""
+    Args: []
+    Env: {}

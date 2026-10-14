@@ -1,0 +1,8 @@
+version: 1.0
+storage:
+  type: mongodb
+  options:
+    mongodb:
+      # 注意：容器内使用服务名 mongo
+      uri: "mongodb://mongo:27017"
+      database: "jaeger"

@@ -1,0 +1,21 @@
+Name: social.rpc
+ListenOn: 0.0.0.0:10001
+
+Telemetry:
+  Name: social-rpc
+  Endpoint: http://127.0.0.1:4318
+  Sampler: 1.0
+  SamplerType: const
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: social.rpc
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/easy_chat?charset=utf8mb4&parseTime=true
+
+Cache:
+  - Host: 127.0.0.1:6379
+    Type: node
+    #Pass: easy-chat

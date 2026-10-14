@@ -1,0 +1,33 @@
+.idea
+.DS_Store
+logs/
+*.sock
+*.vsix
+deploy/docker-compose
+
+# local datastore volumes from docker-compose
+components/mysql/data/
+components/mongo/data/
+components/redis/data/
+components/etcd/data/
+components/etcd/logs/
+components/influxdb/data/
+components/apisix/logs/
+components/grafana/data/
+### Go template
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+

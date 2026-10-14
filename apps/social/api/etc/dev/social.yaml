@@ -1,0 +1,49 @@
+Name: social
+Host: 0.0.0.0
+Port: 8881
+
+Telemetry:
+  Name: social-api
+  Endpoint: http://127.0.0.1:4318
+  Sampler: 1.0
+  SamplerType: const
+
+SocialRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: social.rpc
+  CircuitBreaker:
+    Enable: true
+    ErrorRate: 50
+    MinSample: 100
+    OpenDuration: 10s
+
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+  CircuitBreaker:
+    Enable: true
+    ErrorRate: 50
+    MinSample: 100
+    OpenDuration: 10s
+
+ImRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: im.rpc
+  CircuitBreaker:
+    Enable: true
+    ErrorRate: 50
+    MinSample: 100
+    OpenDuration: 10s
+
+JwtAuth:
+  AccessSecret: imooc.com
+
+Redisx:
+  Host: 127.0.0.1:6379
+  Type: node

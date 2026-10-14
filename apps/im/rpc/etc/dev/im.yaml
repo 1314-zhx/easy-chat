@@ -1,0 +1,21 @@
+Name: im.rpc
+ListenOn: 127.0.0.1:8080
+
+Telemetry:
+  Name: im-rpc
+  Endpoint: http://127.0.0.1:4318
+  Sampler: 1.0
+  SamplerType: const
+
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: im.rpc
+
+Mongo:
+  Url: "mongodb://root:easy-chat@127.0.0.1:27017"
+  Db: easy-chat
+
+Redisx:
+  Host: 127.0.0.1:6379
+  Type: node
